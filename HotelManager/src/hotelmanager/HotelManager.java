@@ -16,6 +16,8 @@ public class HotelManager {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        HotelManagerDBFrame mf1 = new HotelManagerDBFrame();
+        mf1.setVisible(true);
     }
     
 }
