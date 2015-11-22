@@ -6,6 +6,7 @@
 package hotelmanager;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -21,13 +22,14 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Lenovo
  */
-public class HotelManagerDBFrame extends javax.swing.JFrame {
+public class HotelManagerFrame extends javax.swing.JFrame {
     Connection conn=null;
     String gs=null;
+   
     /**
-     * Creates new form HotelManagerDBFrame
+     * Creates new form myFrame1
      */
-    public HotelManagerDBFrame() {
+    public HotelManagerFrame() {
         initComponents();
         conn=DBconnection.makeConn();
        addNodestoTree();
@@ -57,10 +59,8 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
        private void showData2(String tn){       
            PreparedStatement pstmt=null;
            ResultSet rs=null;
-           String sql=null;
+           String sql=null;    
           
-           
-       
         try{
          sql="select * from "+tn+"";
          pstmt=conn.prepareStatement(sql);
@@ -72,7 +72,6 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
         
         catch(Exception e){
         System.err.printf(e.getMessage());
-        
         }
         
        finally{
@@ -99,7 +98,7 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
      Vector rows=new Vector();
      while(rs.next()){
      Vector newrow=new Vector();
-      for(int c=1; c<noc; c++){     //noc= number of columns
+      for(int c=1; c<noc+1; c++){     //noc= number of columns
       newrow.addElement(rs.getObject(c));
      }   
       
@@ -117,16 +116,119 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
     }
      
     
-    private void showFaculty(){
+    private void showCustomer(){
+        
+     int selectedrow =jTable1.getSelectedRow();
+     jTextField1.setText(jTable1.getValueAt(selectedrow, 0).toString());
+     jTextField2.setText(jTable1.getValueAt(selectedrow, 1).toString());
+     jTextField3.setText(jTable1.getValueAt(selectedrow, 2).toString());
+     jTextField4.setText(jTable1.getValueAt(selectedrow, 3).toString());
+     jTextField5.setVisible(false);
+     jTextField6.setVisible(false);
+     jTextField7.setVisible(false);
+     jTextField8.setVisible(false);
+     jTextField9.setVisible(false);
+     jTextField10.setVisible(false);
+     
+     jLabel1.setText(jTable1.getModel().getColumnName(0));
+     jLabel2.setText(jTable1.getModel().getColumnName(1));
+     jLabel3.setText(jTable1.getModel().getColumnName(2));
+     jLabel4.setText(jTable1.getModel().getColumnName(3));     
+     jLabel5.setVisible(false);
+     jLabel6.setVisible(false);
+     jLabel7.setVisible(false);
+     jLabel8.setVisible(false);
+     jLabel9.setVisible(false);
+     jLabel10.setVisible(false);
+     }
+    
+    private void showFront(){
      int selectedrow =jTable1.getSelectedRow();
      jTextField1.setText(jTable1.getValueAt(selectedrow, 0).toString());
      jTextField2.setText(jTable1.getValueAt(selectedrow, 1).toString());
      jTextField3.setText(jTable1.getValueAt(selectedrow, 2).toString());
      jTextField4.setText(jTable1.getValueAt(selectedrow, 3).toString());
      jTextField5.setText(jTable1.getValueAt(selectedrow, 4).toString());
+    
+         
      jTextField6.setText(jTable1.getValueAt(selectedrow, 5).toString());
      jTextField7.setText(jTable1.getValueAt(selectedrow, 6).toString());
-         
+     jTextField8.setText(jTable1.getValueAt(selectedrow, 7).toString());  
+     jTextField9.setVisible(false);
+     jTextField10.setVisible(false);
+     
+     jLabel1.setText(jTable1.getModel().getColumnName(0));
+     jLabel2.setText(jTable1.getModel().getColumnName(1));
+     jLabel3.setText(jTable1.getModel().getColumnName(2));
+     jLabel4.setText(jTable1.getModel().getColumnName(3));
+     jLabel5.setText(jTable1.getModel().getColumnName(4));
+     jLabel6.setText(jTable1.getModel().getColumnName(5));
+     jLabel7.setText(jTable1.getModel().getColumnName(6));
+     jLabel8.setText(jTable1.getModel().getColumnName(7)); 
+     jLabel9.setVisible(false);
+     jLabel10.setVisible(false);
+     }
+    
+    private void showPayment(){
+     int selectedrow =jTable1.getSelectedRow();
+     jTextField1.setText(jTable1.getValueAt(selectedrow, 0).toString());
+     jTextField2.setText(jTable1.getValueAt(selectedrow, 1).toString());
+     jTextField3.setText(jTable1.getValueAt(selectedrow, 2).toString());
+     jTextField4.setText(jTable1.getValueAt(selectedrow, 3).toString());
+     jTextField5.setVisible(false);
+     jTextField6.setVisible(false);
+     jTextField7.setVisible(false);
+     jTextField8.setVisible(false);
+     jTextField9.setVisible(false);
+     jTextField10.setVisible(false);
+     
+     jLabel1.setText(jTable1.getModel().getColumnName(0));
+     jLabel2.setText(jTable1.getModel().getColumnName(1));
+     jLabel3.setText(jTable1.getModel().getColumnName(2));
+     jLabel4.setText(jTable1.getModel().getColumnName(3));
+     jLabel5.setVisible(false);
+     jLabel6.setVisible(false);
+     jLabel7.setVisible(false);
+     jLabel8.setVisible(false);
+     jLabel9.setVisible(false);
+     jLabel10.setVisible(false);
+     }
+    
+    private void showRoom(){
+     int selectedrow =jTable1.getSelectedRow();
+    jTextField1.setText(jTable1.getValueAt(selectedrow, 0).toString());
+     jTextField2.setText(jTable1.getValueAt(selectedrow, 1).toString());
+     jTextField3.setText(jTable1.getValueAt(selectedrow, 2).toString());
+     jTextField4.setText(jTable1.getValueAt(selectedrow, 3).toString());
+     jTextField5.setText(jTable1.getValueAt(selectedrow, 4).toString());
+     jTextField6.setText(jTable1.getValueAt(selectedrow, 5).toString());
+     jTextField7.setText(jTable1.getValueAt(selectedrow, 6).toString());
+     jTextField8.setText(jTable1.getValueAt(selectedrow, 7).toString());
+     jTextField9.setVisible(false);
+     jTextField10.setVisible(false);
+     
+     jLabel1.setText(jTable1.getModel().getColumnName(0));
+     jLabel2.setText(jTable1.getModel().getColumnName(1));
+     jLabel3.setText(jTable1.getModel().getColumnName(2));
+     jLabel4.setText(jTable1.getModel().getColumnName(3));
+     jLabel5.setText(jTable1.getModel().getColumnName(4));
+     jLabel6.setText(jTable1.getModel().getColumnName(5));
+     jLabel7.setText(jTable1.getModel().getColumnName(6));
+     jLabel8.setText(jTable1.getModel().getColumnName(7));
+      jLabel9.setVisible(false);
+     jLabel10.setVisible(false);
+     }
+    
+   
+    private void showStaff(){
+     int selectedrow =jTable1.getSelectedRow();
+     jTextField1.setText(jTable1.getValueAt(selectedrow, 0).toString());
+     jTextField2.setText(jTable1.getValueAt(selectedrow, 1).toString());
+     jTextField3.setText(jTable1.getValueAt(selectedrow, 2).toString());
+     jTextField4.setText(jTable1.getValueAt(selectedrow, 3).toString());
+     jTextField5.setText(jTable1.getValueAt(selectedrow, 4).toString());
+     jTextField6.setText(jTable1.getValueAt(selectedrow, 5).toString());     
+     jTextField7.setVisible(false);
      jTextField8.setVisible(false);
      jTextField9.setVisible(false);
      jTextField10.setVisible(false);
@@ -136,9 +238,8 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
      jLabel3.setText(jTable1.getModel().getColumnName(2));
      jLabel4.setText(jTable1.getModel().getColumnName(3));
      jLabel5.setText(jTable1.getModel().getColumnName(4));
-     jLabel6.setText(jTable1.getModel().getColumnName(6));
-     jLabel7.setText(jTable1.getModel().getColumnName(7));
-     
+     jLabel6.setText(jTable1.getModel().getColumnName(5));
+     jLabel7.setVisible(false);
      jLabel8.setVisible(false);
      jLabel9.setVisible(false);
      jLabel10.setVisible(false);
@@ -155,12 +256,17 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
     root.add(utilities);
     root.add(reports);
     
-    DefaultMutableTreeNode t1=new DefaultMutableTreeNode("Faculty");
-    DefaultMutableTreeNode t2=new DefaultMutableTreeNode("Course");
-    DefaultMutableTreeNode t3=new DefaultMutableTreeNode("Student");
+    DefaultMutableTreeNode t1=new DefaultMutableTreeNode("Customer");
+    DefaultMutableTreeNode t2=new DefaultMutableTreeNode("Front");
+    DefaultMutableTreeNode t3=new DefaultMutableTreeNode("Payment");
+    DefaultMutableTreeNode t4=new DefaultMutableTreeNode("Room");
+    DefaultMutableTreeNode t5=new DefaultMutableTreeNode("Staff");
+
     tables.add(t1);
     tables.add(t2);
     tables.add(t3);
+    tables.add(t4);
+    tables.add(t5);
     
     DefaultMutableTreeNode u1=new DefaultMutableTreeNode("Utility1");
     DefaultMutableTreeNode u2=new DefaultMutableTreeNode("Utility1");
@@ -205,7 +311,7 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         slabel1 = new javax.swing.JLabel();
@@ -342,15 +448,10 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Delete");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
@@ -378,10 +479,10 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(btnSearch)
@@ -390,18 +491,18 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)
+                                .addComponent(Delete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton6))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(2, 2, 2)
                         .addComponent(slabel1)
                         .addGap(18, 18, 18)
                         .addComponent(stext1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 203, Short.MAX_VALUE))
+                .addContainerGap(1074, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,7 +515,7 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
                             .addComponent(btnSearch)
                             .addComponent(btnNew)
                             .addComponent(btnAdd)
-                            .addComponent(jButton4)
+                            .addComponent(Delete)
                             .addComponent(jButton5)
                             .addComponent(jButton6))
                         .addGap(18, 18, 18)
@@ -555,9 +656,9 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(112, 112, 112)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -574,7 +675,7 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
             if(gs=="Faculty")
-                  searchFaculty();
+                  serchFaculty();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -587,9 +688,32 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         gs=mySeletedNode();
-        showData2(gs);        
-        if(gs=="Faculty")
-            showFaculty();
+       System.out.println(gs);
+        showData(gs); 
+       
+          if(gs=="Front")
+          {
+         // showData2(gs);
+            showFront();
+        }
+            if(gs=="Customer")
+        {
+           // showData2(gs);   
+            showCustomer();
+        }
+           if(gs=="Payment")
+        {
+            showPayment();
+        }
+            if(gs=="Room")
+        {
+         
+            showRoom();
+        }
+        if(gs=="Staff")
+        {
+            showStaff();
+        }
     }//GEN-LAST:event_jTree1ValueChanged
 
     private void jTree1TreeExpanded(javax.swing.event.TreeExpansionEvent evt) {//GEN-FIRST:event_jTree1TreeExpanded
@@ -598,32 +722,69 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        showFaculty();
+        
+            if(gs=="Front")
+          {
+            showFront();
+         }
+            if(gs=="Customer")
+        {
+            showCustomer();
+        }
+           if(gs=="Payment")
+        {
+           // showData2(gs);   
+            showPayment();
+        }
+            if(gs=="Room")
+        {
+           // showData2(gs);   
+            showRoom();
+        }
+        if(gs=="Staff")
+        {
+            //showData2(gs);   
+            showStaff();
+        }
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void stext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stext1ActionPerformed
         // TODO add your handling code here:
+        serchFaculty();
     }//GEN-LAST:event_stext1ActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(gs=="Faculty")
-            addFaculty3();
+        if(gs=="Customer")
+              addCustomer();
+        if(gs=="Front")
+              addFront();
+        if(gs=="Payment")
+              addCustomer();
+        if(gs=="Room")
+              addRoom();
+        if(gs=="Staff")
+              addStaff();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        if(gs=="Faculty")
-            clearFaculty();
+        if(gs=="Customer")
+            clearCustomer();
+        if(gs=="Front")
+            clearFront();
+        if(gs=="Payment")
+            clearPayment();
+        if(gs=="Room")
+            clearRoom();
+        if(gs=="Staff")
+            clearStaff();
+        
     }//GEN-LAST:event_btnNewActionPerformed
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        if(gs=="Faculty")
-            deleteFaculty2();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        delete();
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -642,34 +803,32 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
                     }
                 }
             } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(HotelManagerDBFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(HotelManagerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(HotelManagerDBFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(HotelManagerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(HotelManagerDBFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(HotelManagerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(HotelManagerDBFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(HotelManagerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             //</editor-fold>
 
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new HotelManagerDBFrame.setVisible();
+                    new HotelManagerFrame().setVisible(true);
                 }
             });
         }
-        /*
+        
         private void serchFaculty(){
            PreparedStatement pstmt=null;
            ResultSet rs=null;
            String sql=null;
-          slabel1.setText("Faculty ID");
-           
-       
+          slabel1.setText("Faculty ID");          
         try{
             if(stext1.getText().equals("")){
-                 sql="select * from "+gs+"";
+                 sql="select * from"+gs+"";
                  pstmt=conn.prepareStatement(sql);
             }
             else
@@ -677,7 +836,7 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
                     sql="select * from "+gs+"where faculty_id=?";
                     pstmt=conn.prepareStatement(sql);
                     pstmt.setString(1,stext1.getText());
-                }            
+            }            
             rs=pstmt.executeQuery();
             pstmt=conn.prepareStatement(sql);
             rs=pstmt.executeQuery();
@@ -700,271 +859,264 @@ public class HotelManagerDBFrame extends javax.swing.JFrame {
         System.err.printf(e.getMessage());}
         }
         }
-       */ 
-    private void searchFaculty()
-    {
-          PreparedStatement pstmt=null;
-      ResultSet rs =null;
-      String sql =null;
-      slabel1.setText("Faculty ID");
-       
-       try{
-           if(stext1.getText()==""){
-               sql="select * from "+gs+"";}
-           else 
-           {
-               sql="select * from "+gs+" where faculty_id=?";
-               pstmt=conn.prepareStatement(sql);
-               pstmt.setString(1, stext1.getText());
-           }
-            
-            pstmt=conn.prepareStatement(sql);
-            rs=pstmt.executeQuery();
-          
-          //jTable1.setModel(DbUtils.resultSetToTableModel(rs)); //import net.proteanit.sql.DbUtils; 임포트 해줘야함
-           jTable1.setModel(rstoTable(rs)); //import net.proteanit.sql.DbUtils; 임포트 해줘야함
-           jTable1.setRowSelectionInterval(0, 0);
-           showFaculty();
-           
-       }
-    
-       
-   catch(Exception e){
-       System.err.printf(e.getMessage());
-       }
-       finally
-       {
-           try
-           {
-           pstmt.close();
-           rs.close();
-           }
-            catch(Exception e)
-             {
-                System.err.printf(e.getMessage());
-             }
-       }
-    }
         
-private void clearFaculty(){
+private void addCustomer(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+
+        try{            
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             rs.moveToInsertRow();
+             rs.updateString(1,jTextField1.getText());
+             rs.updateString(2,jTextField2.getText());
+             rs.updateString(3,jTextField3.getText());
+             rs.updateString(4,jTextField4.getText());
+            
+             rs.insertRow();     
+             JOptionPane.showMessageDialog(null, "Record Added");      
+             showData(gs);             
+             showCustomer();
+           }                  
+        catch(Exception e){
+         JOptionPane.showMessageDialog(null, e.getMessage());      
+        JOptionPane.showMessageDialog(null, "Record not Added");    
+        System.err.printf(e.getMessage());   
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}    
+private void addFront(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+        try{            
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             rs.moveToInsertRow();
+             rs.updateString(1,jTextField1.getText());
+             rs.updateString(2,jTextField2.getText());
+             rs.updateString(3,jTextField3.getText());
+             rs.updateString(4,jTextField4.getText());
+             rs.updateString(5,jTextField5.getText());
+             rs.updateString(6,jTextField6.getText());
+             rs.updateString(7,jTextField7.getText());
+             rs.updateString(8,jTextField8.getText());
+             rs.insertRow();     
+             
+             JOptionPane.showMessageDialog(null, "Record Added");      
+             showData(gs);             
+             showFront();
+           }                  
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, e.getMessage());  
+        JOptionPane.showMessageDialog(null, "Record not Added Front"); 
+         
+        System.err.printf(e.getMessage());   
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}    
+
+private void addPayment(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+        try{            
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             rs.moveToInsertRow();
+             rs.updateString(1,jTextField1.getText());
+             rs.updateString(2,jTextField2.getText());
+             rs.updateString(3,jTextField3.getText());
+             rs.updateString(4,jTextField4.getText());
+        
+             rs.insertRow();     
+            
+             JOptionPane.showMessageDialog(null, "Record Added");      
+             showData(gs);   
+             
+             showPayment();
+             
+           }                  
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, e.getMessage());  
+        JOptionPane.showMessageDialog(null, "Record not Added");    
+        System.err.printf(e.getMessage());   
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}    
+private void addRoom(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+        try{            
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             rs.moveToInsertRow();
+             rs.updateString(1,jTextField1.getText());
+             rs.updateString(2,jTextField2.getText());
+             rs.updateString(3,jTextField3.getText());
+             rs.updateString(4,jTextField4.getText());
+             rs.updateString(5,jTextField4.getText());
+             rs.updateString(6,jTextField4.getText());
+             rs.updateString(7,jTextField4.getText());
+             rs.updateString(8,jTextField4.getText());
+             rs.insertRow();     
+             JOptionPane.showMessageDialog(null, "Record Added");      
+             showData(gs);             
+             showRoom();
+           }                  
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, e.getMessage());  
+        JOptionPane.showMessageDialog(null, "Record not Added");    
+        
+        System.err.printf(e.getMessage());   
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}    
+private void addStaff(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+        try{            
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             rs.moveToInsertRow();
+             rs.updateString(1,jTextField1.getText());
+             rs.updateString(2,jTextField2.getText());
+             rs.updateString(3,jTextField3.getText());
+             rs.updateString(4,jTextField4.getText());
+             rs.updateString(5,jTextField4.getText());
+             rs.updateString(6,jTextField4.getText());
+             rs.insertRow();     
+             JOptionPane.showMessageDialog(null, "Record Added");      
+             showData(gs);             
+             showStaff();
+           }                  
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, e.getMessage());  
+        JOptionPane.showMessageDialog(null, "Record not Added");    
+        System.err.printf(e.getMessage());   
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}    
+//delete record using delete statement
+
+         
+private void delete(){
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       String sql=null;
+     
+       
+        try{            
+             int rownum=jTable1.getSelectedRow();
+             sql="select * from "+gs+"";
+             pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+             rs=pstmt.executeQuery();
+             
+             rs.absolute(rownum+1);
+             rs.deleteRow();
+             
+             JOptionPane.showMessageDialog(null, "Record is deleted");      
+             showData(gs);             
+             showCustomer();
+           }                  
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Record is not deleted");    
+        System.err.printf(e.getMessage());   
+        
+        }        
+       finally{
+        try{
+            pstmt.close();
+            rs.close();}
+         catch(Exception e){
+        System.err.printf(e.getMessage());}
+        }
+}      
+private void clearCustomer(){
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+
+}
+private void clearFront(){
     jTextField1.setText("");
     jTextField2.setText("");
     jTextField3.setText("");
     jTextField4.setText("");
     jTextField5.setText("");
     jTextField6.setText("");
-    jTextField7.setText("");
-    
+    jTextField7.setText(""); 
+    jTextField8.setText(""); 
 }
-private void addFaculty1(){
-    PreparedStatement pstmt=null;
-           String sql=null;
-           int num=0;
-           
-       
-        try{           
-          sql="insert into Faculty(faculty_id, faculty_name, office, phone, college, title, email) values(?,?,?,?,?,?,?)";
-          pstmt=conn.prepareStatement(sql);
-          pstmt.setString(1,jTextField1.getText());
-          pstmt.setString(2,jTextField2.getText());
-          pstmt.setString(3,jTextField3.getText());
-          pstmt.setString(4,jTextField4.getText());
-          pstmt.setString(5,jTextField5.getText());
-          pstmt.setString(6,jTextField6.getText());
-          pstmt.setString(7,jTextField7.getText());
-                  
-        num=pstmt.executeUpdate();
-        JOptionPane.showMessageDialog(null,"Record Added");
-        showData(gs);
-        showFaculty();
-        }
-        
-        catch(Exception e){
-        System.err.printf(e.getMessage());
-        
-        }
-        
-       finally{
-        try{
-            pstmt.close();
-        }
-         catch(Exception e){
-        System.err.printf(e.getMessage());}
-        }
-}
-      
-private void addFaculty2(){
-    CallableStatement cst=null;
-      String sql=null;
-      int num=0;
-           
-       
-        try{           
-          sql="{call addFaculty(?,?,?,?,?,?,?)}";
-          cst=conn.prepareCall(sql);
-          cst.setString(1,jTextField1.getText());
-          cst.setString(2,jTextField2.getText());
-          cst.setString(3,jTextField3.getText());
-          cst.setString(4,jTextField4.getText());
-          cst.setString(5,jTextField5.getText());
-          cst.setString(6,jTextField6.getText());
-          cst.setString(7,jTextField7.getText());
-          
-          cst.execute();
-       
-        JOptionPane.showMessageDialog(null,"Record Added");
-        showData(gs);
-        showFaculty();
-        }
-        
-        catch(Exception e){
-        JOptionPane.showMessageDialog(null,"Record Added");
-        System.err.printf(e.getMessage());
-        
-        }
-        
-       finally{
-        try{
-            cst.close();
-        }
-         catch(Exception e){
-        System.err.printf(e.getMessage());}
-        }
-}
-private void addFaculty3(){
-    PreparedStatement pstmt=null;
-    String sql=null;
-    ResultSet rs = null;
-           
-       
-    try{
-        sql="select * from "+ gs + "";
-          
-        pstmt=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        rs = pstmt.executeQuery();
-        rs.moveToInsertRow();
-        rs.updateString(1,jTextField1.getText());
-        rs.updateString(2,jTextField2.getText());
-        rs.updateString(3,jTextField3.getText());
-        rs.updateString(4,jTextField4.getText());
-        rs.updateString(5,jTextField5.getText());
-        rs.updateString(6,jTextField6.getText());
-        rs.updateString(7,jTextField7.getText());
-        rs.insertRow();
-        JOptionPane.showMessageDialog(null,"Record Added");
-        showData(gs);
-        showFaculty();
-    }
-    catch(Exception e){
-        JOptionPane.showMessageDialog(null,"Record not Added");
-    }
-    finally{
-        try{
-            pstmt.close();
-        }
-        catch(Exception e){
-            System.err.printf(e.getMessage());
-        }
-    }
-}
+private void clearPayment(){
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
 
-///////////////////////delete 함수////////////
-private void deleteFaculty1(){
-    PreparedStatement pstmt=null;
-           String sql=null;
-           int num=0;
-           
-       
-        try{    
-           int rownum=jTable1.getSelectedRow();
-          String id = jTable1.getModel().getValueAt(rownum, 0).toString();
-          
-          sql="delete frome Faculty where faculty_Id=?";
-          
-          pstmt=conn.prepareStatement(sql);
-          pstmt.setString(1, id);
-          
-          num=pstmt.executeUpdate();
-          JOptionPane.showMessageDialog(null, "Record is deleted");
-          pstmt.setString(1,jTextField1.getText());
-          pstmt.setString(2,jTextField2.getText());
-          pstmt.setString(3,jTextField3.getText());
-          pstmt.setString(4,jTextField4.getText());
-          pstmt.setString(5,jTextField5.getText());
-          pstmt.setString(6,jTextField6.getText());
-          pstmt.setString(7,jTextField7.getText());
-                  
-        
-        showData(gs);
-        showFaculty();
-        }
-        
-        catch(Exception e){
-        System.err.printf(e.getMessage());
-        
-        }
-        
-       finally{
-        try{
-            pstmt.close();
-        }
-         catch(Exception e){
-        System.err.printf(e.getMessage());}
-        }
 }
-////delete method using stored procedure//
-private void deleteFaculty2(){
-    CallableStatement cst=null;
-      String sql=null;
-      int num=0;
-           
-       
-        try{           
-            int rownum=jTable1.getSelectedRow();
-             String id = jTable1.getModel().getValueAt(rownum, 0).toString();
-          
-          sql="{call spDeleteFaculty(?)}";
-          cst=conn.prepareCall(sql);
-          cst.setString(1, id);
-          
-          cst.execute();
-
-          cst.setString(1,jTextField1.getText());
-          cst.setString(2,jTextField2.getText());
-          cst.setString(3,jTextField3.getText());
-          cst.setString(4,jTextField4.getText());
-          cst.setString(5,jTextField5.getText());
-          cst.setString(6,jTextField6.getText());
-          cst.setString(7,jTextField7.getText());
-          
-         
-       
-        JOptionPane.showMessageDialog(null,"Record deleted");
-        showData(gs);
-        showFaculty();
-        }
-        
-        catch(Exception e){
-        JOptionPane.showMessageDialog(null,"Record Added");
-        System.err.printf(e.getMessage());
-        
-        }
-        
-       finally{
-        try{
-            cst.close();
-        }
-         catch(Exception e){
-        System.err.printf(e.getMessage());}
-        }
+private void clearRoom(){
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText(""); 
+    jTextField8.setText(""); 
 }
-      
-
+private void clearStaff(){
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

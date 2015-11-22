@@ -27,7 +27,7 @@ public class DBconnection {
     }
     
     // Establish the Connection
-    String url ="jdbc:sqlserver://GUAPOJUN:1433;databaseName=Hotel_Manager";
+    String url ="jdbc:sqlserver://LENOVO-PC:1433;databaseName=Hotel_Manager";
     try{
        conn=DriverManager.getConnection(url,"sa","1234");
          JOptionPane.showMessageDialog(null, "getConnected");
